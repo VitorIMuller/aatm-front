@@ -1,18 +1,11 @@
 import PropTypes from 'prop-types';
-import ListBulletIcon from '@heroicons/react/24/solid/ListBulletIcon';
-import {
-  Avatar,
-  Box,
-  Card,
-  CardContent,
-  LinearProgress,
-  Stack,
-  SvgIcon,
-  Typography
-} from '@mui/material';
+import ArrowDownIcon from '@heroicons/react/24/solid/ArrowDownIcon';
+import ArrowUpIcon from '@heroicons/react/24/solid/ArrowUpIcon';
+import ArrowTrendingUp from '@heroicons/react/24/solid/ArrowTrendingUpIcon';
+import { Avatar, Card, CardContent, Stack, SvgIcon, Typography } from '@mui/material';
 
 export const OverviewTasksProgress = (props) => {
-  const { value, sx } = props;
+  const { difference, positive = false, sx, value } = props;
 
   return (
     <Card sx={sx}>
@@ -26,39 +19,68 @@ export const OverviewTasksProgress = (props) => {
           <Stack spacing={1}>
             <Typography
               color="text.secondary"
-              gutterBottom
               variant="overline"
             >
-              Task Progress
+              Total de viagens
             </Typography>
             <Typography variant="h4">
-              {value}%
+              {value}
             </Typography>
           </Stack>
           <Avatar
             sx={{
-              backgroundColor: 'warning.main',
+              backgroundColor: 'success.indigo',
               height: 56,
               width: 56
             }}
           >
             <SvgIcon>
-              <ListBulletIcon />
+              <ArrowTrendingUp />
             </SvgIcon>
           </Avatar>
         </Stack>
-        <Box sx={{ mt: 3 }}>
-          <LinearProgress
-            value={value}
-            variant="determinate"
-          />
-        </Box>
+        {/* {difference && (
+          <Stack
+            alignItems="center"
+            direction="row"
+            spacing={2}
+            sx={{ mt: 2 }}
+          >
+            <Stack
+              alignItems="center"
+              direction="row"
+              spacing={0.5}
+            >
+              <SvgIcon
+                color={positive ? 'success' : 'error'}
+                fontSize="small"
+              >
+                {positive ? <ArrowUpIcon /> : <ArrowDownIcon />}
+              </SvgIcon>
+              <Typography
+                color={positive ? 'success.main' : 'error.main'}
+                variant="body2"
+              >
+                {difference}%
+              </Typography>
+            </Stack>
+            <Typography
+              color="text.secondary"
+              variant="caption"
+            >
+              Since last month
+            </Typography>
+          </Stack>
+        )} */}
       </CardContent>
     </Card>
   );
 };
 
 OverviewTasksProgress.propTypes = {
-  value: PropTypes.number.isRequired,
+  difference: PropTypes.number,
+  positive: PropTypes.bool,
+  value: PropTypes.string.isRequired,
   sx: PropTypes.object
 };
+

@@ -5,12 +5,14 @@ import ShoppingBagIcon from '@heroicons/react/24/solid/ShoppingBagIcon';
 import UserIcon from '@heroicons/react/24/solid/UserIcon';
 import UserPlusIcon from '@heroicons/react/24/solid/UserPlusIcon';
 import UsersIcon from '@heroicons/react/24/solid/UsersIcon';
+import ArrowTrendingUp from '@heroicons/react/24/solid/ArrowTrendingUpIcon';
+import TruckIcon from '@heroicons/react/24/solid/TruckIcon';
 import XCircleIcon from '@heroicons/react/24/solid/XCircleIcon';
 import { SvgIcon } from '@mui/material';
 
 export const items = [
   {
-    title: 'Overview',
+    title: 'Dashboard',
     path: '/',
     icon: (
       <SvgIcon fontSize="small">
@@ -19,8 +21,8 @@ export const items = [
     )
   },
   {
-    title: 'Customers',
-    path: '/customers',
+    title: 'Clientes',
+    path: '/clientes',
     icon: (
       <SvgIcon fontSize="small">
         <UsersIcon />
@@ -28,57 +30,57 @@ export const items = [
     )
   },
   {
-    title: 'Companies',
-    path: '/companies',
+    title: 'Viagens',
+    path: '/viagens',
     icon: (
       <SvgIcon fontSize="small">
-        <ShoppingBagIcon />
+        <ArrowTrendingUp />
       </SvgIcon>
     )
   },
   {
-    title: 'Account',
-    path: '/account',
+    title: 'Frota',
+    path: '/frota',
     icon: (
       <SvgIcon fontSize="small">
-        <UserIcon />
+        <TruckIcon />
       </SvgIcon>
     )
   },
-  {
-    title: 'Settings',
-    path: '/settings',
-    icon: (
-      <SvgIcon fontSize="small">
-        <CogIcon />
-      </SvgIcon>
-    )
-  },
-  {
-    title: 'Login',
-    path: '/auth/login',
-    icon: (
-      <SvgIcon fontSize="small">
-        <LockClosedIcon />
-      </SvgIcon>
-    )
-  },
-  {
-    title: 'Register',
-    path: '/auth/register',
-    icon: (
-      <SvgIcon fontSize="small">
-        <UserPlusIcon />
-      </SvgIcon>
-    )
-  },
-  {
-    title: 'Error',
-    path: '/404',
-    icon: (
-      <SvgIcon fontSize="small">
-        <XCircleIcon />
-      </SvgIcon>
-    )
-  }
+  // {
+  //   title: 'Settings',
+  //   path: '/settings',
+  //   icon: (
+  //     <SvgIcon fontSize="small">
+  //       <CogIcon />
+  //     </SvgIcon>
+  //   )
+  // },
+  // {
+  //   title: 'Login',
+  //   path: '/auth/login',
+  //   icon: (
+  //     <SvgIcon fontSize="small">
+  //       <LockClosedIcon />
+  //     </SvgIcon>
+  //   )
+  // },
+  // {
+  //   title: 'Register',
+  //   path: '/auth/register',
+  //   icon: (
+  //     <SvgIcon fontSize="small">
+  //       <UserPlusIcon />
+  //     </SvgIcon>
+  //   )
+  // },
+  // {
+  //   title: 'Error',
+  //   path: '/404',
+  //   icon: (
+  //     <SvgIcon fontSize="small">
+  //       <XCircleIcon />
+  //     </SvgIcon>
+  //   )
+  // }
 ];

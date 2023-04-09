@@ -42,8 +42,9 @@ export const CustomersTable = (props) => {
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell padding="checkbox">
-                  <Checkbox
+                <TableCell>
+                  ID
+                  {/* <Checkbox
                     checked={selectedAll}
                     indeterminate={selectedSome}
                     onChange={(event) => {
@@ -53,22 +54,22 @@ export const CustomersTable = (props) => {
                         onDeselectAll?.();
                       }
                     }}
-                  />
-                </TableCell>
+                  />  */}
+                </TableCell> 
                 <TableCell>
-                  Name
+                  Nome
                 </TableCell>
                 <TableCell>
                   Email
                 </TableCell>
                 <TableCell>
-                  Location
+                  Endereço
                 </TableCell>
                 <TableCell>
-                  Phone
+                  Telefone
                 </TableCell>
                 <TableCell>
-                  Signed Up
+                  Data de cadastro
                 </TableCell>
               </TableRow>
             </TableHead>
@@ -84,7 +85,16 @@ export const CustomersTable = (props) => {
                     selected={isSelected}
                   >
                     <TableCell padding="checkbox">
-                      <Checkbox
+                      <Stack
+                        alignItems="center"
+                        direction="row"
+                        spacing={2}
+                      >
+                        <Typography variant="subtitle2">
+                          {customer.id}
+                        </Typography>
+                      </Stack>
+                      {/* <Checkbox
                         checked={isSelected}
                         onChange={(event) => {
                           if (event.target.checked) {
@@ -93,7 +103,7 @@ export const CustomersTable = (props) => {
                             onDeselectOne?.(customer.id);
                           }
                         }}
-                      />
+                      /> */}
                     </TableCell>
                     <TableCell>
                       <Stack
@@ -101,9 +111,9 @@ export const CustomersTable = (props) => {
                         direction="row"
                         spacing={2}
                       >
-                        <Avatar src={customer.avatar}>
+                        {/* <Avatar src={customer.avatar}>
                           {getInitials(customer.name)}
-                        </Avatar>
+                        </Avatar> */}
                         <Typography variant="subtitle2">
                           {customer.name}
                         </Typography>
@@ -136,6 +146,7 @@ export const CustomersTable = (props) => {
         page={page}
         rowsPerPage={rowsPerPage}
         rowsPerPageOptions={[5, 10, 25]}
+        labelRowsPerPage={'Linhas por página'}
       />
     </Card>
   );

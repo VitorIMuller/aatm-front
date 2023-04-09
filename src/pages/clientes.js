@@ -8,6 +8,7 @@ import { Box, Button, Container, Stack, SvgIcon, Typography } from '@mui/materia
 import { useSelection } from 'src/hooks/use-selection';
 import { Layout as DashboardLayout } from 'src/layouts/dashboard/layout';
 import { CustomersTable } from 'src/sections/customer/customers-table';
+import { AddCustomer, AddCustomes } from 'src/sections/customer/add-customer';
 import { CustomersSearch } from 'src/sections/customer/customers-search';
 import { applyPagination } from 'src/utils/apply-pagination';
 
@@ -15,7 +16,7 @@ const now = new Date();
 
 const data = [
   {
-    id: '5e887ac47eed253091be10cb',
+    id: '1',
     address: {
       city: 'Cleveland',
       country: 'USA',
@@ -29,7 +30,7 @@ const data = [
     phone: '304-428-3097'
   },
   {
-    id: '5e887b209c28ac3dd97f6db5',
+    id: '2',
     address: {
       city: 'Atlanta',
       country: 'USA',
@@ -43,7 +44,7 @@ const data = [
     phone: '712-351-5711'
   },
   {
-    id: '5e887b7602bdbc4dbb234b27',
+    id: '3',
     address: {
       city: 'North Canton',
       country: 'USA',
@@ -57,7 +58,7 @@ const data = [
     phone: '770-635-2682'
   },
   {
-    id: '5e86809283e28b96d2d38537',
+    id: '4',
     address: {
       city: 'Madrid',
       country: 'Spain',
@@ -71,7 +72,7 @@ const data = [
     phone: '908-691-3242'
   },
   {
-    id: '5e86805e2bafd54f66cc95c3',
+    id: '5',
     address: {
       city: 'San Diego',
       country: 'USA',
@@ -85,7 +86,7 @@ const data = [
     phone: '972-333-4106'
   },
   {
-    id: '5e887a1fbefd7938eea9c981',
+    id: '6',
     address: {
       city: 'Berkeley',
       country: 'USA',
@@ -99,7 +100,7 @@ const data = [
     phone: '858-602-3409'
   },
   {
-    id: '5e887d0b3d090c1b8f162003',
+    id: '7',
     address: {
       city: 'Carson City',
       country: 'USA',
@@ -113,7 +114,7 @@ const data = [
     phone: '415-907-2647'
   },
   {
-    id: '5e88792be2d4cfb4bf0971d9',
+    id: '8',
     address: {
       city: 'Los Angeles',
       country: 'USA',
@@ -127,7 +128,7 @@ const data = [
     phone: '702-661-1654'
   },
   {
-    id: '5e8877da9a65442b11551975',
+    id: '9',
     address: {
       city: 'Murray',
       country: 'USA',
@@ -141,7 +142,7 @@ const data = [
     phone: '313-812-8947'
   },
   {
-    id: '5e8680e60cba5019c5ca6fda',
+    id: '10',
     address: {
       city: 'Salt Lake City',
       country: 'USA',
@@ -177,6 +178,7 @@ const useCustomerIds = (customers) => {
 const Page = () => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
+  const [open, setOpen] = useState(false);
   const customers = useCustomers(page, rowsPerPage);
   const customersIds = useCustomerIds(customers);
   const customersSelection = useSelection(customersIds);
@@ -195,11 +197,15 @@ const Page = () => {
     []
   );
 
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
     <>
       <Head>
         <title>
-          Customers | Devias Kit
+          AATM | Clientes
         </title>
       </Head>
       <Box
@@ -218,34 +224,8 @@ const Page = () => {
             >
               <Stack spacing={1}>
                 <Typography variant="h4">
-                  Customers
+                  Clientes
                 </Typography>
-                <Stack
-                  alignItems="center"
-                  direction="row"
-                  spacing={1}
-                >
-                  <Button
-                    color="inherit"
-                    startIcon={(
-                      <SvgIcon fontSize="small">
-                        <ArrowUpOnSquareIcon />
-                      </SvgIcon>
-                    )}
-                  >
-                    Import
-                  </Button>
-                  <Button
-                    color="inherit"
-                    startIcon={(
-                      <SvgIcon fontSize="small">
-                        <ArrowDownOnSquareIcon />
-                      </SvgIcon>
-                    )}
-                  >
-                    Export
-                  </Button>
-                </Stack>
               </Stack>
               <div>
                 <Button
@@ -255,12 +235,17 @@ const Page = () => {
                     </SvgIcon>
                   )}
                   variant="contained"
+                  onClick={()=> setOpen(true)}
                 >
-                  Add
+                  Novo Cliente
                 </Button>
               </div>
             </Stack>
-            <CustomersSearch />
+            <AddCustomer
+              open={open}
+              close={handleClose}
+            />
+            {/* <CustomersSearch /> */}
             <CustomersTable
               count={data.length}
               items={customers}

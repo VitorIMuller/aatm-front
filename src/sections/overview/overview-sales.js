@@ -73,17 +73,17 @@ const useChartOptions = () => {
       },
       categories: [
         'Jan',
-        'Feb',
+        'Fev',
         'Mar',
-        'Apr',
-        'May',
+        'Abr',
+        'Mai',
         'Jun',
         'Jul',
-        'Aug',
-        'Sep',
-        'Oct',
+        'Ago',
+        'Set',
+        'Out',
         'Nov',
-        'Dec'
+        'Dez'
       ],
       labels: {
         offsetY: 5,
@@ -124,7 +124,7 @@ export const OverviewSales = (props) => {
             Sync
           </Button>
         )}
-        title="Sales"
+        title="Faturamento"
       />
       <CardContent>
         <Chart
@@ -136,7 +136,7 @@ export const OverviewSales = (props) => {
         />
       </CardContent>
       <Divider />
-      <CardActions sx={{ justifyContent: 'flex-end' }}>
+      {/* <CardActions sx={{ justifyContent: 'flex-end' }}>
         <Button
           color="inherit"
           endIcon={(
@@ -148,7 +148,7 @@ export const OverviewSales = (props) => {
         >
           Overview
         </Button>
-      </CardActions>
+      </CardActions> */}
     </Card>
   );
 };

@@ -21,7 +21,7 @@ export const OverviewBudget = (props) => {
               color="text.secondary"
               variant="overline"
             >
-              Budget
+              Faturamento Mensal
             </Typography>
             <Typography variant="h4">
               {value}
@@ -39,7 +39,7 @@ export const OverviewBudget = (props) => {
             </SvgIcon>
           </Avatar>
         </Stack>
-        {difference && (
+        {/* {difference && (
           <Stack
             alignItems="center"
             direction="row"
@@ -71,7 +71,7 @@ export const OverviewBudget = (props) => {
               Since last month
             </Typography>
           </Stack>
-        )}
+        )} */}
       </CardContent>
     </Card>
   );
