@@ -83,9 +83,8 @@ export const AuthProvider = (props) => {
     if (isAuthenticated) {
       const user = {
         id: '5e86809283e28b96d2d38537',
-        avatar: '/assets/avatars/avatar-anika-visser.png',
-        name: 'Anika Visser',
-        email: 'anika.visser@devias.io'
+        name: 'Teste',
+        email: 'teste@teste.com'
       };
 
       dispatch({
@@ -116,9 +115,8 @@ export const AuthProvider = (props) => {
 
     const user = {
       id: '5e86809283e28b96d2d38537',
-      avatar: '/assets/avatars/avatar-anika-visser.png',
-      name: 'Anika Visser',
-      email: 'anika.visser@devias.io'
+      name: 'Teste',
+      email: 'teste@teste.com'
     };
 
     dispatch({
@@ -128,8 +126,8 @@ export const AuthProvider = (props) => {
   };
 
   const signIn = async (email, password) => {
-    if (email !== 'demo@devias.io' || password !== 'Password123!') {
-      throw new Error('Please check your email and password');
+    if (email !== 'teste@teste.com' || password !== '123') {
+      throw new Error('Email ou senhas incorretos');
     }
 
     try {
@@ -140,9 +138,8 @@ export const AuthProvider = (props) => {
 
     const user = {
       id: '5e86809283e28b96d2d38537',
-      avatar: '/assets/avatars/avatar-anika-visser.png',
-      name: 'Anika Visser',
-      email: 'anika.visser@devias.io'
+      name: 'Teste',
+      email: 'teste@teste.com'
     };
 
     dispatch({

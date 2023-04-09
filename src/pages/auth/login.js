@@ -25,20 +25,20 @@ const Page = () => {
   const [method, setMethod] = useState('email');
   const formik = useFormik({
     initialValues: {
-      email: 'demo@devias.io',
-      password: 'Password123!',
+      email: 'teste@teste.com',
+      password: '123',
       submit: null
     },
     validationSchema: Yup.object({
       email: Yup
         .string()
-        .email('Must be a valid email')
+        .email('Coloque um email valido')
         .max(255)
-        .required('Email is required'),
+        .required('Email é obrigatório'),
       password: Yup
         .string()
         .max(255)
-        .required('Password is required')
+        .required('Senha é obrigatória')
     }),
     onSubmit: async (values, helpers) => {
       try {
@@ -71,7 +71,7 @@ const Page = () => {
     <>
       <Head>
         <title>
-          Login | Devias Kit
+          AATM | Login
         </title>
       </Head>
       <Box
@@ -99,21 +99,6 @@ const Page = () => {
               <Typography variant="h4">
                 Login
               </Typography>
-              <Typography
-                color="text.secondary"
-                variant="body2"
-              >
-                Don&apos;t have an account?
-                &nbsp;
-                <Link
-                  component={NextLink}
-                  href="/auth/register"
-                  underline="hover"
-                  variant="subtitle2"
-                >
-                  Register
-                </Link>
-              </Typography>
             </Stack>
             <Tabs
               onChange={handleMethodChange}
@@ -123,10 +108,6 @@ const Page = () => {
               <Tab
                 label="Email"
                 value="email"
-              />
-              <Tab
-                label="Phone Number"
-                value="phoneNumber"
               />
             </Tabs>
             {method === 'email' && (
@@ -179,37 +160,24 @@ const Page = () => {
                 >
                   Continue
                 </Button>
-                <Button
+                {/* <Button
                   fullWidth
                   size="large"
                   sx={{ mt: 3 }}
                   onClick={handleSkip}
                 >
                   Skip authentication
-                </Button>
+                </Button> */}
                 <Alert
                   color="primary"
                   severity="info"
                   sx={{ mt: 3 }}
                 >
                   <div>
-                    You can use <b>demo@devias.io</b> and password <b>Password123!</b>
+                    Pode usar <b>teste@teste.com</b> e a senha <b>123</b>
                   </div>
                 </Alert>
               </form>
-            )}
-            {method === 'phoneNumber' && (
-              <div>
-                <Typography
-                  sx={{ mb: 1 }}
-                  variant="h6"
-                >
-                  Not available in the demo
-                </Typography>
-                <Typography color="text.secondary">
-                  To prevent unnecessary costs we disabled this feature in the demo.
-                </Typography>
-              </div>
             )}
           </div>
         </Box>
