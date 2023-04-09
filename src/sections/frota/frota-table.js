@@ -122,7 +122,7 @@ export const FrotaTable = (props) => {
                                             {customer.motorista}
                                         </TableCell>
                                         <TableCell>
-                                            {customer.phone}
+                                            {customer.telefone}
                                         </TableCell>
                                         {/* <TableCell>
                                             {customer.phone}
@@ -137,16 +137,6 @@ export const FrotaTable = (props) => {
                     </Table>
                 </Box>
             </Scrollbar>
-            <TablePagination
-                component="div"
-                count={count}
-                onPageChange={onPageChange}
-                onRowsPerPageChange={onRowsPerPageChange}
-                page={page}
-                rowsPerPage={rowsPerPage}
-                rowsPerPageOptions={[5, 10, 25]}
-                labelRowsPerPage={'Linhas por página'}
-            />
         </Card>
     );
 };

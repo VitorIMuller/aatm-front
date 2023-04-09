@@ -21,19 +21,19 @@ const data = [
         id: '1',
         placa: 'QIR-0E80',
         motorista: 'Anderson Tabarelli',
-        phone: '(47)9 9999-9999'
+        telefone: '(47)9 9999-9999'
     },
     {
         id: '2',
         placa: 'MLW-2G08',
         motorista: 'Marco Aurelio',
-        phone: '(47)9 9999-9999'
+        telefone: '(47)9 9999-9999'
     },
     {
         id: '3',
         placa: 'RLH-0E80',
         motorista: 'Sandro Tabarelli',
-        phone: '(47)9 9999-9999'
+        telefone: '(47)9 9999-9999'
     },
 ];
 
@@ -62,6 +62,7 @@ const Page = () => {
     const customers = useCustomers(page, rowsPerPage);
     const customersIds = useCustomerIds(customers);
     const customersSelection = useSelection(customersIds);
+    const [data, setData]= useState([])
 
     const handlePageChange = useCallback(
         (event, value) => {
@@ -135,8 +136,6 @@ const Page = () => {
                             onRowsPerPageChange={handleRowsPerPageChange}
                             onSelectAll={customersSelection.handleSelectAll}
                             onSelectOne={customersSelection.handleSelectOne}
-                            page={page}
-                            rowsPerPage={rowsPerPage}
                             selected={customersSelection.selected}
                         />
                     </Stack>

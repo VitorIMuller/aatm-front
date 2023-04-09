@@ -4,12 +4,28 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { Stack, TextField } from '@mui/material';
+import { useState } from 'react';
+import api from '../../api/servicos.js'
+
 
 
 export const AddFrota = (props) => {
 
+    const [dados, setDados] = useState({
+        placa: '',
+        motorista: '',
+        telefone: ''
+    })
+
     function handleModal() {
         props.close(false)
+    }
+
+    const createCaminhao = (dados) => {
+        console.log(dados)
+        api.createCaminhao(dados).then(() => {
+            console.log('sucesso')
+        })
     }
     return (
         <div>
@@ -39,19 +55,23 @@ export const AddFrota = (props) => {
                             label="Placa"
                             variant="outlined"
                             required
+                            onChange={(e) => setDados({ ...dados, placa: e.target.value })}
                         />
                         <TextField
                             id="outlined-basic"
                             label="Nome do motorista"
                             variant="outlined"
+                            onChange={(e) => setDados({ ...dados, motorista: e.target.value })}
                         />
                         <TextField
                             id="outlined-basic"
                             label="Telefone do motorista"
                             variant="outlined"
+                            onChange={(e) => setDados({ ...dados, telefone: e.target.value })}
                         />
                     </Stack>
                     <Button
+                        onClick={()=> createCaminhao(dados)}
                         variant="contained"
                         sx={{ mt: 2 }}>
                         Salvar
