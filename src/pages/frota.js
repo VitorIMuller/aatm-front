@@ -1,18 +1,13 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import Head from 'next/head';
-import { subDays, subHours } from 'date-fns';
-import ArrowDownOnSquareIcon from '@heroicons/react/24/solid/ArrowDownOnSquareIcon';
-import ArrowUpOnSquareIcon from '@heroicons/react/24/solid/ArrowUpOnSquareIcon';
 import PlusIcon from '@heroicons/react/24/solid/PlusIcon';
 import { Box, Button, Container, Stack, SvgIcon, Typography } from '@mui/material';
 import { useSelection } from 'src/hooks/use-selection';
 import { Layout as DashboardLayout } from 'src/layouts/dashboard/layout';
-import { CustomersTable } from 'src/sections/customer/customers-table';
-import { AddCustomer, AddCustomes } from 'src/sections/customer/add-customer';
-import { CustomersSearch } from 'src/sections/customer/customers-search';
 import { applyPagination } from 'src/utils/apply-pagination';
 import { FrotaTable } from 'src/sections/frota/frota-table';
 import { AddFrota } from 'src/sections/frota/add-frota';
+import * as api from '../api/servicos.js'
 
 const now = new Date();
 
@@ -59,6 +54,7 @@ const Page = () => {
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(5);
     const [open, setOpen] = useState(false);
+    const [frota, setFrota]=useState([])
     const customers = useCustomers(page, rowsPerPage);
     const customersIds = useCustomerIds(customers);
     const customersSelection = useSelection(customersIds);
@@ -81,6 +77,16 @@ const Page = () => {
     const handleClose = () => {
         setOpen(false);
     };
+
+    async function buscarCaminhoes() {
+        api.getFrota().then((res) => {
+            setFrota(res)
+        })
+    }
+
+    useEffect(() => {
+        buscarCaminhoes()
+    }, [])
 
     return (
         <>
@@ -128,8 +134,8 @@ const Page = () => {
                         />
                         {/* <CustomersSearch /> */}
                         <FrotaTable
-                            count={data.length}
-                            items={customers}
+                            count={frota.length}
+                            items={frota}
                             onDeselectAll={customersSelection.handleDeselectAll}
                             onDeselectOne={customersSelection.handleDeselectOne}
                             onPageChange={handlePageChange}

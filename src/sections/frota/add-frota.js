@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { Stack, TextField } from '@mui/material';
 import { useState } from 'react';
-import api from '../../api/servicos.js'
+import * as api from '../../api/servicos.js'
 
 
 
@@ -23,8 +23,8 @@ export const AddFrota = (props) => {
 
     const createCaminhao = (dados) => {
         console.log(dados)
-        api.createCaminhao(dados).then(() => {
-            console.log('sucesso')
+        api.createCaminhao(dados).then((res) => {
+            window.location.reload()
         })
     }
     return (
