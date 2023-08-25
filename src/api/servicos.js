@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const BASE_URL = "http://localhost:4000"
+const BASE_URL = "http://localhost:4000/api"
 
 
 function createConfig(token) {
@@ -19,16 +19,14 @@ export async function signIn(data) {
 export async function createCaminhao(formaData) {
     // const config = createConfig(token)
 
-    const caminhao = await axios.post(`${BASE_URL}/caminhao`, formaData)
+    const frota = await axios.post(`${BASE_URL}/frota`, formaData)
 
-    return caminhao.data
+    return frota.data
 }
 
-
-
-
 export async function getFrota() {
-    const caminhao = await axios.get(`${BASE_URL}/caminhao`)
+    const caminhao = await axios.get(`${BASE_URL}/frota`)
+    console.log(caminhao)
 
     return caminhao.data
 

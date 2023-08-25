@@ -15,25 +15,17 @@ import {
   Typography
 } from '@mui/material';
 import { Scrollbar } from 'src/components/scrollbar';
-import { getInitials } from 'src/utils/get-initials';
 
 export const CustomersTable = (props) => {
   const {
     count = 0,
     items = [],
-    onDeselectAll,
-    onDeselectOne,
     onPageChange = () => {},
     onRowsPerPageChange,
-    onSelectAll,
-    onSelectOne,
     page = 0,
     rowsPerPage = 0,
     selected = []
   } = props;
-
-  const selectedSome = (selected.length > 0) && (selected.length < items.length);
-  const selectedAll = (items.length > 0) && (selected.length === items.length);
 
   return (
     <Card>
@@ -44,17 +36,6 @@ export const CustomersTable = (props) => {
               <TableRow>
                 <TableCell>
                   ID
-                  {/* <Checkbox
-                    checked={selectedAll}
-                    indeterminate={selectedSome}
-                    onChange={(event) => {
-                      if (event.target.checked) {
-                        onSelectAll?.();
-                      } else {
-                        onDeselectAll?.();
-                      }
-                    }}
-                  />  */}
                 </TableCell> 
                 <TableCell>
                   Nome
@@ -77,7 +58,6 @@ export const CustomersTable = (props) => {
               {items.map((customer) => {
                 const isSelected = selected.includes(customer.id);
                 const createdAt = format(customer.createdAt, 'dd/MM/yyyy');
-
                 return (
                   <TableRow
                     hover
@@ -94,16 +74,6 @@ export const CustomersTable = (props) => {
                           {customer.id}
                         </Typography>
                       </Stack>
-                      {/* <Checkbox
-                        checked={isSelected}
-                        onChange={(event) => {
-                          if (event.target.checked) {
-                            onSelectOne?.(customer.id);
-                          } else {
-                            onDeselectOne?.(customer.id);
-                          }
-                        }}
-                      /> */}
                     </TableCell>
                     <TableCell>
                       <Stack
@@ -111,9 +81,6 @@ export const CustomersTable = (props) => {
                         direction="row"
                         spacing={2}
                       >
-                        {/* <Avatar src={customer.avatar}>
-                          {getInitials(customer.name)}
-                        </Avatar> */}
                         <Typography variant="subtitle2">
                           {customer.name}
                         </Typography>

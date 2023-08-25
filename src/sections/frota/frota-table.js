@@ -43,20 +43,6 @@ export const FrotaTable = (props) => {
                         <TableHead>
                             <TableRow>
                                 <TableCell>
-                                    ID
-                                    {/* <Checkbox
-                    checked={selectedAll}
-                    indeterminate={selectedSome}
-                    onChange={(event) => {
-                      if (event.target.checked) {
-                        onSelectAll?.();
-                      } else {
-                        onDeselectAll?.();
-                      }
-                    }}
-                  />  */}
-                                </TableCell>
-                                <TableCell>
                                     Placa
                                 </TableCell>
                                 <TableCell>
@@ -65,12 +51,6 @@ export const FrotaTable = (props) => {
                                 <TableCell>
                                     Telefone Motorista
                                 </TableCell>
-                                {/* <TableCell>
-                                    Telefone
-                                </TableCell>
-                                <TableCell>
-                                    Data de cadastro
-                                </TableCell> */}
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -83,53 +63,22 @@ export const FrotaTable = (props) => {
                                         key={customer.id}
                                         selected={isSelected}
                                     >
-                                        <TableCell padding="checkbox">
-                                            <Stack
-                                                alignItems="center"
-                                                direction="row"
-                                                spacing={2}
-                                            >
-                                                <Typography variant="subtitle2">
-                                                    {customer.id}
-                                                </Typography>
-                                            </Stack>
-                                            {/* <Checkbox
-                        checked={isSelected}
-                        onChange={(event) => {
-                          if (event.target.checked) {
-                            onSelectOne?.(customer.id);
-                          } else {
-                            onDeselectOne?.(customer.id);
-                          }
-                        }}
-                      /> */}
-                                        </TableCell>
                                         <TableCell>
                                             <Stack
                                                 alignItems="center"
                                                 direction="row"
                                                 spacing={2}
-                                            >
-                                                {/* <Avatar src={customer.avatar}>
-                          {getInitials(customer.name)}
-                        </Avatar> */}
-                                                <Typography variant="subtitle2">
+                                            > <Typography variant="subtitle2">
                                                     {customer.placa}
                                                 </Typography>
                                             </Stack>
                                         </TableCell>
                                         <TableCell>
-                                            {customer.motorista}
+                                            {customer.motorista ? customer.motorista[0]?.nome : ''}
                                         </TableCell>
                                         <TableCell>
-                                            {customer.telefone}
+                                            {customer.motorista ? customer.motorista[0]?.telefone : ''}
                                         </TableCell>
-                                        {/* <TableCell>
-                                            {customer.phone}
-                                        </TableCell>
-                                        <TableCell>
-                                            {createdAt}
-                                        </TableCell> */}
                                     </TableRow>
                                 );
                             })}

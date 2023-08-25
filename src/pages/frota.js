@@ -79,7 +79,7 @@ const Page = () => {
     };
 
     async function buscarCaminhoes() {
-        api.getFrota().then((res) => {
+        await api.getFrota().then((res) => {
             setFrota(res)
         })
     }
@@ -132,7 +132,6 @@ const Page = () => {
                             open={open}
                             close={handleClose}
                         />
-                        {/* <CustomersSearch /> */}
                         <FrotaTable
                             count={frota.length}
                             items={frota}

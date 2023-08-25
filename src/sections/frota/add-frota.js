@@ -22,8 +22,15 @@ export const AddFrota = (props) => {
     }
 
     const createCaminhao = (dados) => {
-        console.log(dados)
-        api.createCaminhao(dados).then((res) => {
+        const dadosFormatados = {
+            placa: dados.placa,
+            motorista: {
+                nome: dados.motorista,
+                telefone: dados.telefone,
+                cpf: dados.cpf
+            }
+        }
+        api.createCaminhao(dadosFormatados).then((res) => {
             window.location.reload()
         })
     }
@@ -48,20 +55,38 @@ export const AddFrota = (props) => {
                         justifyContent="flex-start"
                         alignItems="flex-start"
                         spacing={1}
-                        sx={{ mt: 2 }}
+                        sx={{ mt: 2, mb: 2 }}
                     >
                         <TextField
                             id="outlined-basic"
                             label="Placa"
                             variant="outlined"
                             required
+                            fullWidth 
                             onChange={(e) => setDados({ ...dados, placa: e.target.value })}
                         />
+                    </Stack>
+                    <Stack sx={{ mb: 2 }}>
                         <TextField
                             id="outlined-basic"
                             label="Nome do motorista"
                             variant="outlined"
+                            required
                             onChange={(e) => setDados({ ...dados, motorista: e.target.value })}
+                        />
+                    </Stack>
+                    <Stack
+                        direction="row"
+                        spacing={2}
+                    >
+                        <TextField
+                            id="outlined-basic"
+                            label="CPF do motorista"
+                            variant="outlined"
+                            fullWidth 
+                            required
+                            numbver
+                            onChange={(e) => setDados({ ...dados, cpf: e.target.value })}
                         />
                         <TextField
                             id="outlined-basic"
